@@ -6,7 +6,7 @@ before_install:
   - docker build -t mmoiz/react-test -f ./client/Dockerfile.dev ./client
 
 script: 
-  - docker run mmoiz/react-test npm test -- --coverage
+  - docker run -e CI=true mmoiz/react-test npm test
 
 after_success: 
   - docker build -t mmoiz/multi-client ./client
